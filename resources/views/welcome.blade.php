@@ -21,11 +21,14 @@
         </style>
     </head>
     <body class="bg-gray-200 p-4">
+        
         <div class="lg:w-2/4 mx-auto py-8 px-6 bg-white rounded-xl">
         <h1 class="font-bold text-5xl text-center mb-8">ToDo List</h1>
 
         <div class="mb-6">
+            {{-- post --}}
             <form class="flex flex-col space-y-4" action="/" method="post">
+                @csrf
                 <input type="text" name="title" placeholder="Todo title" class="py-3 px-4 bg-gray-100 rounded-xl">
                 <textarea name="description" placeholder="Todo description" class="py-3 px-4 bg-gray-100 rounded-xl"></textarea>
 
@@ -35,10 +38,11 @@
 
         <hr>
         <div class="mt-2">
+            @foreach ($todos as $todo)
             <div class="py-4 flex items-center border-b border-gray-300 px-3">
                 <div class="flex-1 pr-8">
-                    <h3 class="text-lg font-semibold">Title</h3>
-                    <p class="text-gray-500">Description</p>
+                    <h3 class="text-lg font-semibold">{{ $todo->title }}</h3>
+                    <p class="text-gray-500">{{ $todo->description }}</p>
                 </div>
 
                 <div class="flex space-x-3">
@@ -55,6 +59,8 @@
                     </button>
                 </div>
             </div>
+            @endforeach
+            
         </div>
 
         </div>
