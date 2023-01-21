@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function index(){
 
         $todos=Todo::all();
-        
+
         return view('welcome', ['todos'=>$todos]);
     }
 
@@ -20,7 +20,7 @@ class TodoController extends Controller
             'description'=>'nullable']
         );
 
-        Todo::created($attributes);
+        Todo::create($attributes);
         
         return redirect('/');
     }
